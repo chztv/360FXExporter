@@ -12,10 +12,10 @@ $('.setting_button').live("click",function(){
 } );
 
 function settingshow() {
-  $(".setting_panel").show();  
+  $(".setting_panel").toggle();  
 }
 
-setting_panel = '<div class="panel panel-t1 setting_panel" id="setting_panel" style="display: none; z-index: 110; left: 423px; top: 172px;"><div class="panel-content" remark="oContent"><div class="hd" style="width: 516px;"><h3>设置</h3></div><div class="bd"><div class="msg-panel" id="msg-report"> <div class="win-report-info">360云盘是一个不错的网盘，空间大，下载速度快，这是一个支持Aria2c远程YAAW下载的设置内容，有需要的可以在下面设置您Aria2c的下载RPC地址。</div> <p class="win-report-title">Aria2 RPC 地址：</p> <div class="win-report-reason"><div><input type="text" id="aria2_jsonrpc" style="width: 350px" value="http://192.168.1.1:6800/jsonrpc"></div></div> </div></div><div class="ft" style="width: 530px;"><span class="y-btn y-btn-blue">确定</span><span class="y-btn y-btn-gray">取消</span></div></div><span class="close"><a class="close-link" href="###" onclick="return false;"><span>关闭</span></a></span><span class="left-corner"></span><span class="right-corner"></span></div>';
+setting_panel = '<div class="panel panel-t1 setting_panel" id="setting_panel" style="display: none; z-index: 110; left: 423px; top: 172px;"><div class="panel-content" remark="oContent"><div class="hd" style="width: 516px;"><h3>设置</h3></div><div class="bd"><div class="msg-panel" id="msg-report"> <div class="win-report-info">360云盘是一个不错的网盘，空间大，下载速度快，这是一个支持Aria2c远程YAAW下载的设置内容，有需要的可以在下面设置您Aria2c的下载RPC地址。</div> <p class="win-report-title">Aria2 RPC 地址：</p> <div class="win-report-reason"><div><input type="text" id="aria2_jsonrpc" style="width: 350px" value="http://192.168.1.1:6800/jsonrpc"></div></div> </div></div><div class="ft" style="width: 530px;"><span class="y-btn y-btn-blue">确定</span><span class="y-btn y-btn-gray">取消</span></div></div><span class="close"><a class="close-link" href="###" onclick="settingshow();"><span>关闭</span></a></span><span class="left-corner"></span><span class="right-corner"></span></div>';
 $("body").append(setting_panel);
 
 var TLE = TLE || {};
