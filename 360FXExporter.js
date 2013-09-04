@@ -7,19 +7,15 @@
 //保存按钮
 $('.setting_button').live("click",function(){		    
 	//获取选择的列表
-	TLE.setConfig("QQ_aria2_jsonrpc", $("#QQ_aria2_jsonrpc").val());
-	XF.widget.msgbox.show("设置成功!"+TLE.getConfig("QQ_aria2_jsonrpc"),2,2000);
+	TLE.setConfig("360_aria2_jsonrpc", $("#360_aria2_jsonrpc").val());
+	alert("设置成功!"+TLE.getConfig("QQ_aria2_jsonrpc"));
 } );
 
 function settingshow() {
   $(".setting_panel").toggle();  
 }
 
-setting_panel = '<div class="panel panel-t1 setting_panel" id="setting_panel" style="display: none; z-index: 110; left: 423px; top: 172px;"><div class="panel-content" remark="oContent"><div class="hd" style="width: 516px;"><h3>设置</h3></div><div class="bd"><div class="msg-panel" id="msg-report"> <div class="win-report-info">360云盘是一个不错的网盘，空间大，下载速度快，这是一个支持Aria2c远程YAAW下载的设置内容，有需要的可以在下面设置您Aria2c的下载RPC地址。</div> <p class="win-report-title">Aria2 RPC 地址：</p> <div class="win-report-reason"><div><input type="text" id="aria2_jsonrpc" style="width: 350px" value="http://192.168.1.1:6800/jsonrpc"></div></div> </div></div><div class="ft" style="width: 530px;"><span class="y-btn y-btn-blue">确定</span><span class="y-btn y-btn-gray">取消</span></div></div><span class="close"><a class="close-link" href="###" onclick="settingshow();"><span>关闭</span></a></span><span class="left-corner"></span><span class="right-corner"></span></div>';
-$("body").append(setting_panel);
-
 var TLE = TLE || {};
-
 
 
 (function(TLE) {
@@ -44,15 +40,17 @@ var TLE = TLE || {};
       }
     };
     //set default config
-    if(TLE.getConfig("QQ_aria2_jsonrpc")){
-		var jsonrpc_path = TLE.getConfig("QQ_aria2_jsonrpc");
+    if(TLE.getConfig("360_aria2_jsonrpc")){
+		var jsonrpc_path = TLE.getConfig("360_aria2_jsonrpc");
 	} else {
-		var jsonrpc_path = "http://192.168.1.8:6800/jsonrpc";
+		var jsonrpc_path = "http://192.168.1.1:6800/jsonrpc";
 	};
-    //jsonrpc设置span
-    $("label.check_all_text").after('<span style="height:35px;line-height:35px;padding-left:10px;">Aria2 JSON-RPC Path:<input type="text" id="QQ_aria2_jsonrpc" style="width: 200px" value="'+jsonrpc_path+'"/>  <a href="javascript:;" hidefocus="true" class="setting_button" id="setting_button" title="保存设置" style="color:#666">保存</a></span>');
-    $("span.total_size").after('<span style="height:35px;line-height:35px;padding-left:10px;">Aria2 JSON-RPC Path:<input type="text" id="QQ_aria2_jsonrpc" style="width: 200px" value="'+jsonrpc_path+'"/>  <a href="javascript:;" hidefocus="true" class="setting_button" id="setting_button" title="保存设置" style="color:#666">保存</a></span>');
-
+	
+	
+	setting_panel = '<div class="panel panel-t1 setting_panel" id="setting_panel" style="display: none; z-index: 110; left: 423px; top: 172px;"><div class="panel-content" remark="oContent"><div class="hd" style="width: 516px;"><h3>设置</h3></div><div class="bd"><div class="msg-panel" id="msg-report"> <div class="win-report-info">360云盘是一个不错的网盘，空间大，下载速度快，这是一个支持Aria2c远程YAAW下载的设置内容，有需要的可以在下面设置您Aria2c的下载RPC地址。</div> <p class="win-report-title">Aria2 RPC 地址：</p> <div class="win-report-reason"><div><input type="text" id="aria2_jsonrpc" style="width: 350px" value="'+jsonrpc_path+'"></div></div> </div></div><div class="ft" style="width: 530px;"><span class="y-btn y-btn-blue setting_button">确定</span><span class="y-btn y-btn-gray">取消</span></div></div><span class="close"><a class="close-link" href="###" onclick="settingshow();"><span>关闭</span></a></span><span class="left-corner"></span><span class="right-corner"></span></div>';
+    $("body").append(setting_panel);
+    
+  
 	//普通下载按钮
 	$('.btn_aria2').live("click",function(){		    
 	//获取选择的列表
