@@ -166,7 +166,7 @@ var TLE = TLE || {};
 
 
 function settingshow() {
-  $("#setting_panel").toggle();  
+  $("#setting_panel").show();  
 }
 
 
