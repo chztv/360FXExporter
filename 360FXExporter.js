@@ -164,9 +164,10 @@ var TLE = TLE || {};
     $("div.TLE_get_btnbox").click(function(e){e.stopPropagation();});
   };
 
-$("#setting").click(function(){
-  $("#setting_panel").toggle();
-});
+
+function settingshow() {
+  $("#setting_panel").toggle();  
+}
 
 
 $.ajax({
@@ -176,7 +177,7 @@ $.ajax({
 			dataType: "json",
 			success:function(data){
                 
-                $(".qrcode-body").html('<img id="qrcode-img" src="http://c3.yunpan.360.cn/share/getDLinkQRcode?fullurl=http%3A%2F%2Fajnlsff3wa.l3.yunpan.cn%2Flk%2FQXig3WVxUZjW9"><p>链接可复制，可Aria2</p><a href="'+data.data.downloadurl+'" target="_blank" title="可复制下载地址">直接下载</a>  <a id="setting">设置</a>');
+                $(".qrcode-body").html('<img id="qrcode-img" src="http://c3.yunpan.360.cn/share/getDLinkQRcode?fullurl=http%3A%2F%2Fajnlsff3wa.l3.yunpan.cn%2Flk%2FQXig3WVxUZjW9"><p>链接可复制，可Aria2</p><a href="'+data.data.downloadurl+'" target="_blank" title="可复制下载地址">直接下载</a>  <a id="setting" onclick="settingshow();">设置</a>');
 			 },
 			error:function(){
 				  XF.widget.msgbox.show("获取普通下载链失败,请重试!",2,2000);
