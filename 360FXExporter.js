@@ -9,6 +9,7 @@ $('.setting_button').live("click",function(){
 	//获取选择的列表
 	TLE.setConfig("360_aria2_jsonrpc", $("#360_aria2_jsonrpc").val());
 	alert("设置成功!"+TLE.getConfig("QQ_aria2_jsonrpc"));
+	$(".setting_panel").toggle();
 } );
 
 function settingshow() {
