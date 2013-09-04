@@ -8,7 +8,7 @@
 // @copyright  2013+, chztv <0571chz@gmail.com>
 // ==/UserScript==
 
-var jqscript = document.createElement('jqscript');
+var jqscript = document.createElement('script');
 jqscript.id = "jq_script";
 jqscript.src = "http://libs.baidu.com/jquery/1.8.3/jquery.min.js";
 var script = document.createElement('script');
