@@ -4,19 +4,16 @@
 // Created on 13-09-04 AM1:19
 // Modified on 13-9-04 
 
-
-
-
-
-
-
-
 //保存按钮
 $('.setting_button').live("click",function(){		    
 	//获取选择的列表
 	TLE.setConfig("QQ_aria2_jsonrpc", $("#QQ_aria2_jsonrpc").val());
 	XF.widget.msgbox.show("设置成功!"+TLE.getConfig("QQ_aria2_jsonrpc"),2,2000);
 } );
+
+$('.win-report-info').html('360云盘是一个不错的网盘，空间大，下载速度快，这是一个支持Aria2c远程YAAW下载的设置内容，有需要的可以在下面设置您Aria2c的下载RPC地址。');
+$('.win-report-title').html('Aria2 RPC 地址');
+$('.win-report-reason').html('<div><input type="text" id="aria2_jsonrpc" style="width: 350px" value="http://192.168.1.1:6800/jsonrpc"></div>');
 
 var TLE = TLE || {};
 
@@ -25,29 +22,8 @@ var TLE = TLE || {};
 (function(TLE) {
 
   function init() {
-  	//$(".com_down").html('<dl><dt><a id="btn_normal" class="btn_normal" hidefocus="true" href="javascript:;"></a></dt><dd><a id="btn_normal2" class="btn_normal2" hidefocus="true" href="javascript:;">使用Aria2下载</a></dd></dl>');
-  	
     //css
-    $("head").append('<style>'
-          +'#jisu_btn_chz {background:url(https://raw.github.com/chztv/QQFXExporter/master/images/aria2_btn_V2.png) no-repeat left top;}'
-          +'.btn_aria2 {background:url("https://raw.github.com/chztv/QQFXExporter/master/images/aria2_btn.png") no-repeat left top; width:112px; height: 34px;display: block;float: left;}'
-          +'.TLE_getbtn {position: absolute; top:24px; left:0; border:1px #6FB2F3 solid; background:#fff; width:115px;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;-moz-box-shadow:2px 2px 3px #ddd;-webkit-box-shadow:2px 2px 3px #ddd;}'
-          +'.TLE_getbtn a {display:block; height:22px; line-height:22px; padding-left:18px}'
-          +'.TLE_getbtn a:hover {background:#E4EFF9 url(http://cloud.vip.xunlei.com/190/img/ic_dianbo.png) no-repeat 8px 8px; *background-position:8px 6px ; text-decoration:none}'
-          +'.TLE_get_btnbox .TLE_getlink {width:98px; height:22px; float:left; line-height:21px;*line-height:24px;display:block;color:#000000; margin-right:5px; overflow:hidden;background:url(http://cloud.vip.xunlei.com/190/img/bg_btnall.png?197) no-repeat  0 -390px}'
-          +'.TLE_get_btnbox .TLE_link_gettxt {float:left; display: inline ; width:53px; text-align:center; padding-left:24px; color:#000}'
-          +'.TLE_get_btnbox .TLE_link_gettxt:hover {text-decoration:none}'
-          +'.rwbox .rwset .TLE_link_getic {float:left; display:block; width:20px;height:22px;}'
-          +'.TLE_hiden {display: none; }'
-          +'.TLE_down_btn {background: url(http://cloud.vip.xunlei.com/190/img/lx/bg_rpx.png) no-repeat 0 999em; display: block; float: left; margin: 0 1px; overflow: hidden; color: white; height: 28px; padding-left: 8px; background-position: 0 -60px; text-decoration: none; }'
-          +'.TLE_down_btn span {background: url(http://cloud.vip.xunlei.com/190/img/lx/bg_rpx.png) no-repeat 0 999em; display: block; float: left; height: 28px; line-height: 27px; cursor: pointer; padding-right: 8px; background-position:100% -60px; }'
-          +'.TLE_down_btn:active {background-position:0 -28px; }'
-          +'.TLE_down_btn:active span {background-position:right -28px;}'
-          +'.TLE_icdwlocal { padding-left: 20px; display: inline-block; background: url(http://cloud.vip.xunlei.com/190/img/lx/bg_menu.png) no-repeat 0 999em; background-position: 0 -108px; }'
-          +'.rwbtn.ic_redownloca { display: none !important; }'
-          +'.menu { width: 700px !important; }'
-          
-        +'</style>');
+
 
     //setting
     TLE.getConfig = function(key) {
@@ -194,8 +170,8 @@ $.ajax({
 			data:{"shorturl":SYS_CONF.surl,"nid":SYS_CONF.nid},
 			dataType: "json",
 			success:function(data){
-                alert(data.data.downloadurl);
-                $(".qrcode-body").html('<img id="qrcode-img" src="http://c3.yunpan.360.cn/share/getDLinkQRcode?fullurl=http%3A%2F%2Fajnlsff3wa.l3.yunpan.cn%2Flk%2FQXig3WVxUZjW9"><p>扫描二维码，将文件下载到手机</p><a href="'+data.data.downloadurl+'" target="_blank" title="显示下载地址">直接下载</a>');
+                
+                $(".qrcode-body").html('<img id="qrcode-img" src="http://c3.yunpan.360.cn/share/getDLinkQRcode?fullurl=http%3A%2F%2Fajnlsff3wa.l3.yunpan.cn%2Flk%2FQXig3WVxUZjW9"><p>链接可复制，可Aria2</p><a href="'+data.data.downloadurl+'" target="_blank" title="可复制下载地址">直接下载</a>');
 			 },
 			error:function(){
 				  XF.widget.msgbox.show("获取普通下载链失败,请重试!",2,2000);
