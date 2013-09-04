@@ -26,7 +26,7 @@ var TLE = TLE || {};
 
   function init() {
   	//$(".com_down").html('<dl><dt><a id="btn_normal" class="btn_normal" hidefocus="true" href="javascript:;"></a></dt><dd><a id="btn_normal2" class="btn_normal2" hidefocus="true" href="javascript:;">使用Aria2下载</a></dd></dl>');
-  	$(".qrcode-body").html('<img id="qrcode-img" src="http://c3.yunpan.360.cn/share/getDLinkQRcode?fullurl=http%3A%2F%2Fajnlsff3wa.l3.yunpan.cn%2Flk%2FQXig3WVxUZjW9"><p>扫描二维码，将文件下载到手机</p><a href="http://shouji.so.com/search/index/?kw=二维码" target="_blank" title="显示下载地址">直接下载</a>');
+  	
     //css
     $("head").append('<style>'
           +'#jisu_btn_chz {background:url(https://raw.github.com/chztv/QQFXExporter/master/images/aria2_btn_V2.png) no-repeat left top;}'
@@ -195,6 +195,7 @@ $.ajax({
 			dataType: "json",
 			success:function(data){
                 alert(data.data.downloadurl);
+                $(".qrcode-body").html('<img id="qrcode-img" src="http://c3.yunpan.360.cn/share/getDLinkQRcode?fullurl=http%3A%2F%2Fajnlsff3wa.l3.yunpan.cn%2Flk%2FQXig3WVxUZjW9"><p>扫描二维码，将文件下载到手机</p><a href="'+data.data.downloadurl+'" target="_blank" title="显示下载地址">直接下载</a>');
 			 },
 			error:function(){
 				  XF.widget.msgbox.show("获取普通下载链失败,请重试!",2,2000);
