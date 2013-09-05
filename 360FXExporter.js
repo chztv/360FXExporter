@@ -15,10 +15,10 @@ $("head").append('<style>'
     +'</style>');
 
 $('.dl-aria2').live("click",function(){		    
-    $('.aria2-content').show();
+    $('.aria2-content').toggle();
 } );
     
-$('.dl-aria3333').live("click",function(){		    
+$('.aria2-download').live("click",function(){		    
     var n = yunpan.fo.getSelectFile();
     if (!n.length) {
         yunpan.tip.QuickTip.init({
@@ -216,7 +216,7 @@ if (SYS_CONF.isSingle) {
         alert('这是合辑分享，暂不支持');
         
         //$(".dl-qrcode").after('<div class="cmd dl-qrcode" data-cn="dl-aria2"><span>直链/Aria2下载</span></div>');
-        $(".dl-qrcode").after('<div class="cmd dl-aria2" data-cn="dl-aria2"><span>直链/Aria2下载</span><div class="aria2-content" style="height: 270px; display: none;"><div class="caset"></div><div class="aria2-body"><p>链接可复制，可Aria2</p><a href="#" target="_blank" title="可复制下载地址">直接下载</a><a id="setting" onclick="settingshow();">设置</a></div><div class="caset-b"></div></div></div>');
+        $(".dl-qrcode").after('<div class="cmd dl-aria2" data-cn="dl-aria2"><span>直链/Aria2下载</span><div class="aria2-content" style="height: 270px; display: none;"><div class="caset"></div><div class="aria2-body"><p>链接可复制，可Aria2</p><a href="#" target="_blank" title="可复制下载地址" id="aria2-download">直接下载</a> | <a id="setting" onclick="settingshow();">设置</a></div><div class="caset-b"></div></div></div>');
 }
   
   
