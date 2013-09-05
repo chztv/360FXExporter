@@ -6,12 +6,22 @@
 
 
 $("head").append('<style>'
-    +'.dl-aria2 {float: left;height: 38px;position: relative;width: 120px;}'         
+    +'#toolbar .dl-aria2 {float: left;height: 38px;position: relative;width: 120px;}'         
     +'</style>');
     
 $('.dl-aria2').live("click",function(){		    
-    var selectfile = yunpan.fo.getSelectFile();
-    alert(selectfile.length);
+    var n = yunpan.fo.getSelectFile();
+    if (!n.length) {
+        yunpan.tip.QuickTip.init({
+            container: W("#toolbar .toolbar-box")
+        }),
+        yunpan.tip.QuickTip.show("\u8bf7\u9009\u62e9\u8981\u4e0b\u8f7d\u7684\u6587\u4ef6", "warning", 3e3);
+        return
+    }
+    e = n[0].attr("data-nid");
+    t = n[0].attr("data-size");
+    t = parseInt(t || 0);    
+    alert('nid:'+ e +' size:'+ t);
 } );
 
 //保存按钮
