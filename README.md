@@ -12,6 +12,14 @@
 <li>本脚本参考ThunderLixianExporter修改而成，感谢binux！</li>
 
 <h2>
+<a name="update" class="anchor" href="#update"><span class="mini-icon mini-icon-link"></span></a>更新说明</h2>
+
+<p>2013-09-05</p>
+<blockquote>
+<p>支持专辑分享中的单个文件下载，暂不支持打包。</p>
+</blockquote>
+
+<h2>
 <a name="usage" class="anchor" href="#usage"><span class="mini-icon mini-icon-link"></span></a>Usage</h2>
 
 <p>安装Userscript</p>
