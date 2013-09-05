@@ -13,8 +13,12 @@ $("head").append('<style>'
     +'.aria2-content .caset-b {border-bottom:12px solid #fff;border-right:12px dashed transparent;border-left:12px dashed transparent;height:0;margin-left:120px;overflow:hidden;position:relative;top:-262px;width:0}'
     +'.aria2-body {background-color:#fff;border:1px solid #ccc;box-shadow:0 1px 4px rgba(0,0,0,.15);padding-bottom:13px;text-align:center}'
     +'</style>');
-    
+
 $('.dl-aria2').live("click",function(){		    
+    $('.aria2-content').show();
+} );
+    
+$('.dl-aria3333').live("click",function(){		    
     var n = yunpan.fo.getSelectFile();
     if (!n.length) {
         yunpan.tip.QuickTip.init({
