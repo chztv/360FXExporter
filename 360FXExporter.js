@@ -18,7 +18,7 @@ $('.dl-aria2').live("click",function(){
     $('.aria2-content').toggle();
 } );
     
-$('.aria2-download').live("click",function(){		    
+$('#aria2-download').live("click",function(){		    
     var n = yunpan.fo.getSelectFile();
     if (!n.length) {
         yunpan.tip.QuickTip.init({
