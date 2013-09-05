@@ -6,7 +6,12 @@
 
 
 $("head").append('<style>'
-    +'#toolbar .dl-aria2 {float: left;height: 38px;position: relative;width: 120px;}'         
+    +'#toolbar .dl-aria2 {float: left;height: 38px;position: relative;width: 120px;}'  
+    +'#toolbar .dl-aria2 span {color:#388fc9;display:inline-block;font-size:14px;margin-top:16px;margin-left:10px;text-decoration:underline}'
+    +'.aria2-content {display:none;height:270px;left:-87px;overflow:hidden;position:absolute;top:40px;width:275px;z-index:100}'
+    +'.aria2-content .caset {border-bottom:13px solid #ccc;border-right:13px dashed transparent;border-left:13px dashed transparent;height:0;margin-left:119px;overflow:hidden;width:0}'
+    +'.aria2-content .caset-b {border-bottom:12px solid #fff;border-right:12px dashed transparent;border-left:12px dashed transparent;height:0;margin-left:120px;overflow:hidden;position:relative;top:-262px;width:0}'
+    +'.aria2-body {background-color:#fff;border:1px solid #ccc;box-shadow:0 1px 4px rgba(0,0,0,.15);padding-bottom:13px;text-align:center}'
     +'</style>');
     
 $('.dl-aria2').live("click",function(){		    
@@ -206,7 +211,8 @@ if (SYS_CONF.isSingle) {
 }else{
         alert('这是合辑分享，暂不支持');
         
-        $(".dl-qrcode").after('<div class="cmd dl-aria2" data-cn="dl-aria2"><span>直链/Aria2下载</span></div>');
+        //$(".dl-qrcode").after('<div class="cmd dl-qrcode" data-cn="dl-aria2"><span>直链/Aria2下载</span></div>');
+        $(".dl-qrcode").after('<div class="cmd dl-aria2" data-cn="dl-aria2"><span>直链/Aria2下载</span><div class="aria2-content" style="height: 270px; display: none;"><div class="caset"></div><div class="aria2-body"><p>链接可复制，可Aria2</p><a href="'++'" target="_blank" title="可复制下载地址">直接下载</a>  <a id="setting" onclick="settingshow();">设置</a></div><div class="caset-b"></div></div></div>');
 }
   
   
