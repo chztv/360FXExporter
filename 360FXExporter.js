@@ -169,8 +169,9 @@ var TLE = TLE || {};
 
 
 
-
-$.ajax({
+if (SYS_CONF.isSingle) {
+        alert('这是单个分享');
+        $.ajax({
 			type: "POST",
 			url:"/share/downloadfile/",
 			data:{"shorturl":SYS_CONF.surl,"nid":SYS_CONF.nid},
@@ -182,7 +183,10 @@ $.ajax({
 			error:function(){
 				  XF.widget.msgbox.show("获取普通下载链失败,请重试!",2,2000);
 				 }
-	});  
+	    }); 
+}else{
+        alert('这是合辑分享，暂不支持');
+}
   
   
   init();
