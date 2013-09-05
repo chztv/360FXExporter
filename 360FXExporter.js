@@ -170,7 +170,6 @@ var TLE = TLE || {};
 
 
 if (SYS_CONF.isSingle) {
-        alert('这是单个分享');
         $.ajax({
 			type: "POST",
 			url:"/share/downloadfile/",
@@ -186,6 +185,8 @@ if (SYS_CONF.isSingle) {
 	    }); 
 }else{
         alert('这是合辑分享，暂不支持');
+        var selectfile = yunpan.fo.getSelectFile();
+        alert(selectfile.length);
 }
   
   
