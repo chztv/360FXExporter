@@ -4,6 +4,16 @@
 // Created on 13-09-04 AM1:19
 // Modified on 13-9-04 
 
+
+$("head").append('<style>'
+    +'.dl-aria2 {float: left;height: 38px;position: relative;width: 120px;}'         
+    +'</style>');
+    
+$('.dl-aria2').live("click",function(){		    
+    var selectfile = yunpan.fo.getSelectFile();
+    alert(selectfile.length);
+} );
+
 //保存按钮
 $('.setting_button').live("click",function(){		    
 	//获取选择的列表
@@ -185,9 +195,8 @@ if (SYS_CONF.isSingle) {
 	    }); 
 }else{
         alert('这是合辑分享，暂不支持');
-        //var selectfile = yunpan.fo.getSelectFile();
-        //alert(selectfile.length);
-        $(".qrcode-body").after('<div class="cmd dl-aria2" data-cn="dl-aria2"><span>直链/Aria2下载</span></div>');
+        
+        $(".dl-qrcode").after('<div class="cmd dl-aria2" data-cn="dl-aria2"><span>直链/Aria2下载</span></div>');
 }
   
   
