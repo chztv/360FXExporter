@@ -185,8 +185,9 @@ if (SYS_CONF.isSingle) {
 	    }); 
 }else{
         alert('这是合辑分享，暂不支持');
-        var selectfile = yunpan.fo.getSelectFile();
-        alert(selectfile.length);
+        //var selectfile = yunpan.fo.getSelectFile();
+        //alert(selectfile.length);
+        $(".qrcode-body").after('<div class="cmd dl-aria2" data-cn="dl-aria2"><span>直链/Aria2下载</span></div>');
 }
   
   
