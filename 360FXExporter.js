@@ -11,7 +11,7 @@ $("head").append('<style>'
     +'.aria2-content {display:none;height:270px;left:-87px;overflow:hidden;position:absolute;top:40px;width:275px;z-index:100}'
     +'.aria2-content .caset {border-bottom:13px solid #ccc;border-right:13px dashed transparent;border-left:13px dashed transparent;height:0;margin-left:119px;overflow:hidden;width:0}'
     +'.aria2-content .caset-b {border-bottom:12px solid #fff;border-right:12px dashed transparent;border-left:12px dashed transparent;height:0;margin-left:120px;overflow:hidden;position:relative;top:-262px;width:0}'
-    +'.aria2-body {background-color:#fff;border:1px solid #ccc;box-shadow:0 1px 4px rgba(0,0,0,.15);padding-bottom:13px;text-align:center}'
+    +'.aria2-body {background-color:#fff;border:1px solid #ccc;box-shadow:0 1px 4px rgba(0,0,0,.15);padding-bottom:13px;text-align:center;padding-top: 13px;}'
     +'</style>');
 
 $('.dl-aria2').live("click",function(){		    
@@ -30,7 +30,21 @@ $('#aria2-download').live("click",function(){
     e = n[0].attr("data-nid");
     t = n[0].attr("data-size");
     t = parseInt(t || 0);    
-    alert('nid:'+ e +' size:'+ t);
+    //alert('nid:'+ e +' size:'+ t);
+    $.ajax({
+		type: "POST",
+		url:"/share/downloadfile/",
+		data:{"shorturl":SYS_CONF.surl,"nid":e},
+		dataType: "json",
+		success:function(data){
+            alert(data.data.downloadurl);
+            yunpan.tip.QuickTip.show(data.data.downloadurl, "warning", 3e3);
+            
+		 },
+		error:function(){
+			  XF.widget.msgbox.show("获取普通下载链失败,请重试!",2,2000);
+			 }
+    });     
 } );
 
 //保存按钮
@@ -216,7 +230,7 @@ if (SYS_CONF.isSingle) {
         alert('这是合辑分享，暂不支持');
         
         //$(".dl-qrcode").after('<div class="cmd dl-qrcode" data-cn="dl-aria2"><span>直链/Aria2下载</span></div>');
-        $(".dl-qrcode").after('<div class="cmd dl-aria2" data-cn="dl-aria2"><span>直链/Aria2下载</span><div class="aria2-content" style="height: 270px; display: none;"><div class="caset"></div><div class="aria2-body"><p>链接可复制，可Aria2</p><a href="#" title="可复制下载地址" id="aria2-download" onclick="return false;">直接下载</a> | <a id="setting" onclick="settingshow();">设置</a></div><div class="caset-b"></div></div></div>');
+        $(".dl-qrcode").after('<div class="cmd dl-aria2" data-cn="dl-aria2"><span>直链/Aria2下载</span><div class="aria2-content" style="height: 270px; display: none;"><div class="caset"></div><div class="aria2-body"><p>仅支持单个文件下载，暂不支持打包</p><a href="#" title="可复制下载地址" id="aria2-download" onclick="return false;">直接下载</a> | <a id="setting" onclick="settingshow();">设置</a></div><div class="caset-b"></div></div></div>');
 }
   
   
