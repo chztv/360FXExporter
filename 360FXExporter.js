@@ -22,21 +22,21 @@ function aria2down1(url) {
  //window.location=data.data.com_url;
  //显示Aria2c下载命令
  //alert( "aria2c -c -s10 -x10 --out "+filename+" --header 'Cookie: FTN5K="+data.data.com_cookie+";' '"+data.data.com_url+"'\n"+","+$("#QQ_aria2_jsonrpc").val());
- jsonrpc_path = $("#360_aria2_jsonrpc").val();
+ jsonrpc_path = TLE.getConfig("360_aria2_jsonrpc");
  aria2down1url = $("#aria2url1").attr("href");
- alert(aria2down1url);
- /*
+ //alert(aria2down1url);
+
 	if (jsonrpc_path) {
 	  alert("添加中...到YAAW界面查看是否添加成功");
 	  $.getScript("https://raw.github.com/gist/3116833/aria2jsonrpc.js", function() {
 		var aria2 = new ARIA2(jsonrpc_path);
-		aria2.addUri(data.data.com_url, {out: filename, header: 'Cookie: FTN5K='+data.data.com_cookie});
+		aria2.addUri(aria2down1url, {out: SYS_CONF.name});
 	  });
 
 	} else {
 	  alert("尚未设置Aria2 JSONRPC地址");
 	};
-  */
+
 }
 
 $('#aria2-download').live("click",function(){    
