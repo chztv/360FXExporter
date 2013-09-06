@@ -17,8 +17,27 @@ $("head").append('<style>'
 $('.dl-aria2').live("click",function(){		    
     $('.aria2-content').toggle();
 } );
-    
-$('#aria2-download').live("click",function(){		    
+
+function aria2down1(url){		    
+ //window.location=data.data.com_url;
+ //显示Aria2c下载命令
+ //alert( "aria2c -c -s10 -x10 --out "+filename+" --header 'Cookie: FTN5K="+data.data.com_cookie+";' '"+data.data.com_url+"'\n"+","+$("#QQ_aria2_jsonrpc").val());
+ alert(jsonrpc_path);
+ /*
+	if (jsonrpc_path) {
+	  alert("添加中...到YAAW界面查看是否添加成功");
+	  $.getScript("https://raw.github.com/gist/3116833/aria2jsonrpc.js", function() {
+		var aria2 = new ARIA2(jsonrpc_path);
+		aria2.addUri(data.data.com_url, {out: filename, header: 'Cookie: FTN5K='+data.data.com_cookie});
+	  });
+
+	} else {
+	  alert("尚未设置Aria2 JSONRPC地址");
+	};
+  */
+};
+
+$('#aria2-download').live("click",function(){    
     var n = yunpan.fo.getSelectFile();
     if (!n.length) {
         yunpan.tip.QuickTip.init({
@@ -51,7 +70,7 @@ $('#aria2-download').live("click",function(){
 $('.setting_button').live("click",function(){		    
 	//获取选择的列表
 	TLE.setConfig("360_aria2_jsonrpc", $("#360_aria2_jsonrpc").val());
-	alert("设置成功!"+TLE.getConfig("QQ_aria2_jsonrpc"));
+	alert("设置成功!"+TLE.getConfig("360_aria2_jsonrpc"));
 	$(".setting_panel").toggle();
 } );
 
@@ -220,7 +239,7 @@ if (SYS_CONF.isSingle) {
 			dataType: "json",
 			success:function(data){
                 
-                $(".qrcode-body").html('<img id="qrcode-img" src="http://c3.yunpan.360.cn/share/getDLinkQRcode?fullurl=http%3A%2F%2Fajnlsff3wa.l3.yunpan.cn%2Flk%2FQXig3WVxUZjW9"><p>链接可复制，可Aria2</p><a href="'+data.data.downloadurl+'" target="_blank" title="可复制下载地址">直接下载</a>  <a id="setting" onclick="settingshow();">设置</a>');
+                $(".qrcode-body").html('<img id="qrcode-img" src="http://c3.yunpan.360.cn/share/getDLinkQRcode?fullurl=http%3A%2F%2Fajnlsff3wa.l3.yunpan.cn%2Flk%2FQXig3WVxUZjW9"><p>链接可复制，可Aria2</p><a href="'+data.data.downloadurl+'" target="_blank" title="可复制下载地址">直接下载</a> | <a id="aria2down1" onclick="aria2down1('+data.data.downloadurl+');">Aria2</a> | <a id="setting" onclick="settingshow();">设置</a>');
 			 },
 			error:function(){
 				  XF.widget.msgbox.show("获取普通下载链失败,请重试!",2,2000);
