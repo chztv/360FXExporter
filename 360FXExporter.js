@@ -22,6 +22,7 @@ function aria2down1(url){
  //window.location=data.data.com_url;
  //显示Aria2c下载命令
  //alert( "aria2c -c -s10 -x10 --out "+filename+" --header 'Cookie: FTN5K="+data.data.com_cookie+";' '"+data.data.com_url+"'\n"+","+$("#QQ_aria2_jsonrpc").val());
+ jsonrpc_path = $("#360_aria2_jsonrpc").val();
  alert(jsonrpc_path);
  /*
 	if (jsonrpc_path) {
@@ -35,7 +36,7 @@ function aria2down1(url){
 	  alert("尚未设置Aria2 JSONRPC地址");
 	};
   */
-};
+}
 
 $('#aria2-download').live("click",function(){    
     var n = yunpan.fo.getSelectFile();
