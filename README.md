@@ -2,13 +2,12 @@
 <a name="360fxexporter" class="anchor" href="#thunderlixianexporter"><span class="mini-icon mini-icon-link"></span></a>360FXExporter</h1>
 
 <p>œ
-可将360分享下载地址复制导出或<i>使用aria2等下载命令</i>，方便Linux/Mac用户使用</p>
+可将360分享下载地址复制导出或使用aria2等下载命，方便Linux/Mac用户使用</p>
 
 <ul>
 <li><strong>目前无需登录360帐号即可使用此插件</strong></li>
-<li>目前只支持链接直接下载，或者复制.</li>
-<li>支持aria2-YAAW远程添加下载**暂时内测中**</li>
-<li>需要自己配置支持RPC的Aria2先</li>
+<li>目前支持链接直接下载，或者复制.</li>
+<li>支持aria2-YAAW远程添加下载，须设定json-rpc</li>
 <li>本脚本参考ThunderLixianExporter修改而成，感谢binux！</li>
 
 <h2>
