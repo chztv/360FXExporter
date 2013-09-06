@@ -18,14 +18,9 @@ $('.dl-aria2').live("click",function(){
     $('.aria2-content').toggle();
 } );
 
-function aria2down1(url) {
- //window.location=data.data.com_url;
- //显示Aria2c下载命令
- //alert( "aria2c -c -s10 -x10 --out "+filename+" --header 'Cookie: FTN5K="+data.data.com_cookie+";' '"+data.data.com_url+"'\n"+","+$("#QQ_aria2_jsonrpc").val());
+function aria2down1() {
  jsonrpc_path = TLE.getConfig("360_aria2_jsonrpc");
  aria2down1url = $("#aria2url1").attr("href");
- //alert(aria2down1url);
-
 	if (jsonrpc_path) {
 	  alert("添加中...到YAAW界面查看是否添加成功");
 	  $.getScript("https://raw.github.com/gist/3116833/aria2jsonrpc.js", function() {
@@ -36,11 +31,11 @@ function aria2down1(url) {
 	} else {
 	  alert("尚未设置Aria2 JSONRPC地址");
 	};
-
 }
 
 $('#aria2-download').live("click",function(){    
     var n = yunpan.fo.getSelectFile();
+    jsonrpc_path = TLE.getConfig("360_aria2_jsonrpc");
     if (!n.length) {
         yunpan.tip.QuickTip.init({
             container: W("#toolbar .toolbar-box")
@@ -48,24 +43,40 @@ $('#aria2-download').live("click",function(){
         yunpan.tip.QuickTip.show("\u8bf7\u9009\u62e9\u8981\u4e0b\u8f7d\u7684\u6587\u4ef6", "warning", 3e3);
         return
     }
-    e = n[0].attr("data-nid");
-    t = n[0].attr("data-size");
-    t = parseInt(t || 0);    
+
     //alert('nid:'+ e +' size:'+ t);
-    $.ajax({
-		type: "POST",
-		url:"/share/downloadfile/",
-		data:{"shorturl":SYS_CONF.surl,"nid":e},
-		dataType: "json",
-		success:function(data){
-            alert(data.data.downloadurl);
-            yunpan.tip.QuickTip.show(data.data.downloadurl, "warning", 3e3);
+    for (var j=0;j<n.length;j++){
+        e = n[j].attr("data-nid");
+        t = n[j].attr("data-size");
+        t = parseInt(t || 0);    
+        alert(n[j].attr("data-title"));
+        $.ajax({
+    		type: "POST",
+    		url:"/share/downloadfile/",
+    		data:{"shorturl":SYS_CONF.surl,"nid":e},
+    		dataType: "json",
+    		success:function(data){
+                alert(data.data.downloadurl);
+                /*
+            	if (jsonrpc_path) {
+            	  alert("添加中...到YAAW界面查看是否添加成功");
+            	  $.getScript("https://raw.github.com/gist/3116833/aria2jsonrpc.js", function() {
+            		var aria2 = new ARIA2(jsonrpc_path);
+            		aria2.addUri(aria2down1url, {out: SYS_CONF.name});
+            	  });
             
-		 },
-		error:function(){
-			  XF.widget.msgbox.show("获取普通下载链失败,请重试!",2,2000);
-			 }
-    });     
+            	} else {
+            	  alert("尚未设置Aria2 JSONRPC地址");
+            	};
+                */
+    		 },
+    		error:function(){
+    			  XF.widget.msgbox.show("获取普通下载链失败,请重试!",2,2000);
+    			 }
+        });         
+    }
+    
+
 } );
 
 //保存按钮
