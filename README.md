@@ -14,6 +14,12 @@
 <h2>
 <a name="update" class="anchor" href="#update"><span class="mini-icon mini-icon-link"></span></a>更新说明</h2>
 
+
+<p>2013-09-06</p>
+<blockquote>
+<p>正式支持Aria2c，须设定json-rpc。</p>
+<p>支持专辑分享中的多个文件下载。</p>
+</blockquote>
 <p>2013-09-05</p>
 <blockquote>
 <p>支持专辑分享中的单个文件下载，暂不支持打包。</p>
