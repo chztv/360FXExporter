@@ -13,7 +13,11 @@
 <h2>
 <a name="update" class="anchor" href="#update"><span class="mini-icon mini-icon-link"></span></a>更新说明</h2>
 
-
+<p>2013-09-08</p>
+<blockquote>
+<p>使用cookie设置Aria2 RPC 地址。</p>
+<p>因360云盘使用不相同的二级域名，造成localstore存储rpc地址无法在所有分享链接上使用。</p>
+</blockquote>
 <p>2013-09-06</p>
 <blockquote>
 <p>正式支持Aria2c，须设定json-rpc。</p>
