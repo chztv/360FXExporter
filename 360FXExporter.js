@@ -49,26 +49,24 @@ $('#aria2-download').live("click",function(){
         e = n[j].attr("data-nid");
         t = n[j].attr("data-size");
         t = parseInt(t || 0);    
-        alert(n[j].attr("data-title"));
         $.ajax({
     		type: "POST",
     		url:"/share/downloadfile/",
     		data:{"shorturl":SYS_CONF.surl,"nid":e},
     		dataType: "json",
     		success:function(data){
-                alert(data.data.downloadurl);
-                /*
-            	if (jsonrpc_path) {
-            	  alert("添加中...到YAAW界面查看是否添加成功");
-            	  $.getScript("https://raw.github.com/gist/3116833/aria2jsonrpc.js", function() {
-            		var aria2 = new ARIA2(jsonrpc_path);
-            		aria2.addUri(aria2down1url, {out: SYS_CONF.name});
-            	  });
-            
-            	} else {
-            	  alert("尚未设置Aria2 JSONRPC地址");
-            	};
-                */
+	                //alert(data.data.downloadurl);
+	            	if (jsonrpc_path) {
+	            	  alert("添加中...到YAAW界面查看是否添加成功");
+	            	  $.getScript("https://raw.github.com/gist/3116833/aria2jsonrpc.js", function() {
+	            		var aria2 = new ARIA2(jsonrpc_path);
+	            		aria2.addUri(data.data.downloadurl, {out: n[j].attr("data-title")});
+	            	  });
+	            
+	            	} else {
+	            	  alert("尚未设置Aria2 JSONRPC地址");
+	            	};
+                
     		 },
     		error:function(){
     			  XF.widget.msgbox.show("获取普通下载链失败,请重试!",2,2000);
