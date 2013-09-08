@@ -102,17 +102,15 @@ var TLE = TLE || {};
 
     //setting
     TLE.getConfig = function(key) {
-      if (window.localStorage) {
-        return window.globalStorage["yunpan.cn"].getItem(key) || "";
-      } else {
         return getCookie(key);
-      }
     };
     TLE.setConfig = function(key, value) {
-      if (window.globalStorage) {
+      if (navigator.cookieEnabled) {
         //window.localStorage.setItem(key, value);
-        window.globalStorage['yunpan.cn'].setItem(key, value);
-        alert('设置globalStorage成功');
+          var Days = 30; //此 cookie 将被保存 30 天
+  	  var exp  = new Date();    //new Date("December 31, 9998");
+  	  exp.setTime(exp.getTime() + Days*24*60*60*1000);
+	  document.cookie = key + "="+ escape(value) +";expires="+ exp.toGMTString()+";path=/;domain=.yunpan.cn";
       } else {
         setGdCookie(key, value, 86400*365);
       }
