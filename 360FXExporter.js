@@ -50,6 +50,7 @@ $('#aria2-download').live("click",function(){
         t = n[j].attr("data-size");
         t = parseInt(t || 0);
         filename = n[j].attr("data-title");
+        alert(filename);
         $.ajax({
     		type: "POST",
     		url:"/share/downloadfile/",
