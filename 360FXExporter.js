@@ -58,12 +58,12 @@ $('#aria2-download').live("click",function(){
     		success:function(data){
 	                //alert(data.data.downloadurl);
 	            	if (jsonrpc_path) {
-	            	  alert("添加中...到YAAW界面查看是否添加成功");
+	            	  alert(filename+" 添加中...到YAAW界面查看是否添加成功");
 	            	  
-	            	  $.getScript("https://raw.github.com/gist/3116833/aria2jsonrpc.js", function() {
+	            	  /*$.getScript("https://raw.github.com/gist/3116833/aria2jsonrpc.js", function() {
 	            		var aria2 = new ARIA2(jsonrpc_path);
 	            		aria2.addUri(data.data.downloadurl, {out: filename});
-	            	  });
+	            	  })*/;
 	            
 	            	} else {
 	            	  alert("尚未设置Aria2 JSONRPC地址");
