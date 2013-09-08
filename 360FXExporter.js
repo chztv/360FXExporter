@@ -102,7 +102,9 @@ var TLE = TLE || {};
 
     //setting
     TLE.getConfig = function(key) {
-        return getCookie(key);
+        //return getCookie(key);
+        var arr = document.cookie.match(new RegExp("(^| )"+key+"=([^;]*)(;|$)"));
+  	if(arr != null) return unescape(arr[2]); return null;
     };
     TLE.setConfig = function(key, value) {
       if (navigator.cookieEnabled) {
