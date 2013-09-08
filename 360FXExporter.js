@@ -60,7 +60,7 @@ $('#aria2-download').live("click",function(){
 	            	  alert("添加中...到YAAW界面查看是否添加成功");
 	            	  $.getScript("https://raw.github.com/gist/3116833/aria2jsonrpc.js", function() {
 	            		var aria2 = new ARIA2(jsonrpc_path);
-	            		aria2.addUri(data.data.downloadurl, {out: n[j].attr("data-title")});
+	            		aria2.addUri(data.data.downloadurl);
 	            	  });
 	            
 	            	} else {
