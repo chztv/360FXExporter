@@ -76,7 +76,7 @@ $('#aria2-download').live("click",function(){
         return
     }
 
-    //alert('nid:'+ e +' size:'+ t);
+    alert('/share/downloadfile/shorturl='+SYS_CONF.surl+'&nid:'+ e);
     for (var j=0;j<n.length;j++){
         e = n[j].attr("data-nid");
         t = n[j].attr("data-size");
