@@ -82,7 +82,7 @@ $('#aria2-download').live("click",function(){
         t = n[j].attr("data-size");
         t = parseInt(t || 0);
         filename = n[j].attr("data-title");
-        alert('/share/downloadfile/shorturl='+SYS_CONF.surl+'&nid='+ e);
+        //alert('/share/downloadfile/shorturl='+SYS_CONF.surl+'&nid='+ e);
         //alert(filename);
         $.ajax({
     		type: "POST",
@@ -90,18 +90,20 @@ $('#aria2-download').live("click",function(){
     		data:{"shorturl":SYS_CONF.surl,"nid":e},
     		dataType: "json",
     		success:function(data){
-	                alert(data);
+	                //alert(data.data);
+	                doyaaw(data.data.downloadurl);
+	                /*
 	            	if (jsonrpc_path) {
 	            	  alert(filename+'URL：'+data.data.downloadurl+" 添加中...到YAAW界面查看是否添加成功");
 	            	  
-	            	  /*$.getScript("https://raw.github.com/gist/3116833/aria2jsonrpc.js", function() {
+	            	  $.getScript("https://raw.github.com/gist/3116833/aria2jsonrpc.js", function() {
 	            		var aria2 = new ARIA2(jsonrpc_path);
 	            		aria2.addUri(data.data.downloadurl, {out: filename});
-	            	  })*/;
+	            	  });
 	            
 	            	} else {
 	            	  alert("尚未设置Aria2 JSONRPC地址");
-	            	};
+	            	};*/
                 
     		 },
     		error:function(){
