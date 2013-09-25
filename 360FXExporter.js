@@ -2,8 +2,39 @@
 // Author: Paul Chan<paul@paulreina.com>
 //         http://www.chztv.com
 // Created on 13-09-04 AM1:19
-// Modified on 13-9-04 
+// Modified on 13-9-25 
 
+var ARIA2 = (function() {
+  var jsonrpc_version = '2.0';
+
+  function get_auth(url) {
+    return url.match(/^(?:(?![^:@]+:[^:@\/]*@)[^:\/?#.]+:)?(?:\/\/)?(?:([^:@]*(?::[^:@]*)?)?@)?/)[1];
+  };
+
+  function request(jsonrpc_path, method, params) {
+    var request_obj = {
+      jsonrpc: jsonrpc_version,
+      method: method,
+      id: (new Date()).getTime().toString(),
+    };
+    if (params) request_obj['params'] = params;
+
+    var xhr = new XMLHttpRequest();
+    var auth = get_auth(jsonrpc_path);
+    xhr.open("POST", jsonrpc_path+"?tm="+(new Date()).getTime().toString(), true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    if (auth) xhr.setRequestHeader("Authorization", "Basic "+btoa(auth));
+    xhr.send(JSON.stringify(request_obj));
+  };
+
+  return function(jsonrpc_path) {
+    this.jsonrpc_path = jsonrpc_path;
+    this.addUri = function (uri, options) {
+      request(this.jsonrpc_path, 'aria2.addUri', [[uri, ], options]);
+    };
+    return this;
+  }
+})();
 
 $("head").append('<style>'
     +'#toolbar .dl-aria2 {float: left;height: 38px;position: relative;width: 120px;}'  
@@ -18,19 +49,20 @@ $('.dl-aria2').live("click",function(){
     $('.aria2-content').toggle();
 } );
 
-function aria2down1() {
- jsonrpc_path = TLE.getConfig("360_aria2_jsonrpc");
- aria2down1url = $("#aria2url1").attr("href");
-	if (jsonrpc_path) {
+function doyaaw(url,filename) {
+    jsonrpc_path = TLE.getConfig("360_aria2_jsonrpc");
+    if (jsonrpc_path) {
 	  alert("添加中...到YAAW界面查看是否添加成功");
-	  $.getScript("https://raw.github.com/gist/3116833/aria2jsonrpc.js", function() {
-		var aria2 = new ARIA2(jsonrpc_path);
-		aria2.addUri(aria2down1url, {out: SYS_CONF.name});
-	  });
-
+	  var aria2 = new ARIA2(jsonrpc_path);
+	  aria2.addUri(url, {out: filename});
 	} else {
 	  alert("尚未设置Aria2 JSONRPC地址");
-	};
+	};    
+}
+
+function aria2down1() {
+ aria2down1url = $("#aria2url1").attr("href");
+ doyaaw(aria2down1url,SYS_CONF.name);
 }
 
 $('#aria2-download').live("click",function(){    
