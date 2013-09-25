@@ -13,6 +13,11 @@
 <h2>
 <a name="update" class="anchor" href="#update"><span class="mini-icon mini-icon-link"></span></a>更新说明</h2>
 
+<p>2013-09-25</p>
+<blockquote>
+<p>正式支持批量分享下载</p>
+<p>批量分享中，可直接勾选多个文件直接YAAW加入，暂不支持文件夹下载及打包下载。</p>
+</blockquote>
 <p>2013-09-08</p>
 <blockquote>
 <p>使用cookie设置Aria2 RPC 地址。</p>

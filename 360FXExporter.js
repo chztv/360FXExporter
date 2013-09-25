@@ -52,7 +52,6 @@ $('.dl-aria2').live("click",function(){
 function doyaaw(url,filename) {
     jsonrpc_path = TLE.getConfig("360_aria2_jsonrpc");
     if (jsonrpc_path) {
-	  alert("添加中...到YAAW界面查看是否添加成功");
 	  var aria2 = new ARIA2(jsonrpc_path);
 	  aria2.addUri(url, {out: filename});
 	} else {
@@ -62,6 +61,7 @@ function doyaaw(url,filename) {
 
 function aria2down1() {
  aria2down1url = $("#aria2url1").attr("href");
+ alert("添加中...到YAAW界面查看是否添加成功");
  doyaaw(aria2down1url,SYS_CONF.name);
 }
 
@@ -75,39 +75,31 @@ $('#aria2-download').live("click",function(){
         yunpan.tip.QuickTip.show("\u8bf7\u9009\u62e9\u8981\u4e0b\u8f7d\u7684\u6587\u4ef6", "warning", 3e3);
         return
     }
-
-    
+    alert("批量添加中...如无出错揭示请到YAAW界面查看是否添加成功");    
     for (var j=0;j<n.length;j++){
         e = n[j].attr("data-nid");
         t = n[j].attr("data-size");
         t = parseInt(t || 0);
         filename = n[j].attr("data-title");
         //alert('/share/downloadfile/shorturl='+SYS_CONF.surl+'&nid='+ e);
-        //alert(filename);
         $.ajax({
     		type: "POST",
     		url:"/share/downloadfile/",
     		data:{"shorturl":SYS_CONF.surl,"nid":e},
     		dataType: "json",
-    		success:function(data){
-	                //alert(data.data);
+    		success:function(data){                
 	                doyaaw(data.data.downloadurl);
 	                /*
 	            	if (jsonrpc_path) {
-	            	  alert(filename+'URL：'+data.data.downloadurl+" 添加中...到YAAW界面查看是否添加成功");
-	            	  
 	            	  $.getScript("https://raw.github.com/gist/3116833/aria2jsonrpc.js", function() {
 	            		var aria2 = new ARIA2(jsonrpc_path);
 	            		aria2.addUri(data.data.downloadurl, {out: filename});
-	            	  });
-	            
-	            	} else {
-	            	  alert("尚未设置Aria2 JSONRPC地址");
-	            	};*/
+	            	  });            
+	            	}*/
                 
     		 },
     		error:function(){
-    			  XF.widget.msgbox.show("获取普通下载链失败,请重试!",2,2000);
+    			  alert("获取普通下载链失败,请重试!",2,2000);
     			 }
         });         
     }
