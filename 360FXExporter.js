@@ -90,7 +90,7 @@ $('#aria2-download').live("click",function(){
     		data:{"shorturl":SYS_CONF.surl,"nid":e},
     		dataType: "json",
     		success:function(data){
-	                alert(data.data);
+	                alert(data);
 	            	if (jsonrpc_path) {
 	            	  alert(filename+'URL：'+data.data.downloadurl+" 添加中...到YAAW界面查看是否添加成功");
 	            	  
