@@ -304,7 +304,7 @@ if (SYS_CONF.isSingle) {
         alert('批量分享仅支持多文件下载，不支持文件夹直接下载！！');
         
         //$(".dl-qrcode").after('<div class="cmd dl-qrcode" data-cn="dl-aria2"><span>直链/Aria2下载</span></div>');
-        $(".dl-qrcode").after('<div class="cmd dl-aria2" data-cn="dl-aria2"><span>直链/Aria2下载</span><div class="aria2-content" style="height: 270px; display: none;"><div class="caset"></div><div class="aria2-body"><p>仅支持多文件下载，暂不支持打包</p><a href="#" title="可复制下载地址" id="aria2-download" onclick="return false;">直接下载</a> | <a id="setting" onclick="settingshow();">设置</a></div><div class="caset-b"></div></div></div>');
+        $(".qrcode-img p").html('<div class="cmd dl-aria2" data-cn="dl-aria2"><span>直链/Aria2下载</span><div class="aria2-content" style="height: 270px; display: none;"><div class="caset"></div><div class="aria2-body"><p>仅支持多文件下载，暂不支持打包</p><a href="#" title="可复制下载地址" id="aria2-download" onclick="return false;">直接下载</a> | <a id="setting" onclick="settingshow();">设置</a></div><div class="caset-b"></div></div></div>');
 }
   
   
