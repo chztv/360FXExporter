@@ -69,7 +69,7 @@ function aria2down1() {
 
 $('#aria2-download').live("click",function(){    
     //var n = yunpan.fo.getSelectFile();
-    var e = k.getSelected();
+    var e = yunpan.fo.getSelected();
     alert(e.length);
     jsonrpc_path = TLE.getConfig("360_aria2_jsonrpc");
     if (!n.length) {
