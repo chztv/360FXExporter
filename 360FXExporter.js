@@ -130,21 +130,28 @@ var TLE = TLE || {};
 
     //setting
     TLE.getConfig = function(key) {
-        //return getCookie(key);
-        var arr = document.cookie.match(new RegExp("(^| )"+key+"=([^;]*)(;|$)"));
-  	if(arr != null) return unescape(arr[2]); return null;
+	    if (window.localStorage) {
+	      return window.localStorage.getItem(key) || "";
+	    } else {
+	      return getCookie(key);
+	    }
+        /*var arr = document.cookie.match(new RegExp("(^| )"+key+"=([^;]*)(;|$)"));
+  	if(arr != null) return unescape(arr[2]); return null;*/
     };
     TLE.setConfig = function(key, value) {
-      window.localStorage.setItem(key, value);
-      if (navigator.cookieEnabled) {
-        //window.localStorage.setItem(key, value);
+	if (window.localStorage) {
+		window.localStorage.setItem(key, value);
+	} else {
+		setGdCookie(key, value, 86400*365);
+	}
+      /*if (navigator.cookieEnabled) {
           var Days = 30; //此 cookie 将被保存 30 天
   	  var exp  = new Date();    //new Date("December 31, 9998");
   	  exp.setTime(exp.getTime() + Days*24*60*60*1000);
 	  document.cookie = key + "="+ escape(value) +";expires="+ exp.toGMTString()+";path=/;domain=.yunpan.cn";
       } else {
         setGdCookie(key, value, 86400*365);
-      }
+      }*/
     };
     //set default config
     if(TLE.getConfig("360_aria2_jsonrpc")){
