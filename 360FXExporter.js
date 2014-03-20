@@ -135,6 +135,7 @@ var TLE = TLE || {};
   	if(arr != null) return unescape(arr[2]); return null;
     };
     TLE.setConfig = function(key, value) {
+      window.localStorage.setItem(key, value);
       if (navigator.cookieEnabled) {
         //window.localStorage.setItem(key, value);
           var Days = 30; //此 cookie 将被保存 30 天
