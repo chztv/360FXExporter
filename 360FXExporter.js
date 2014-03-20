@@ -304,6 +304,21 @@ if (SYS_CONF.isSingle) {
 	    }); 
 }else{
         alert('批量分享仅支持多文件下载，不支持文件夹直接下载！！');
+	$.ajax({
+		type: "POST",
+		url:"/share/downloadfile/",
+		data:{"shorturl":SYS_CONF.surl,"nid":SYS_CONF.nid},
+		dataType: "json",
+		success:function(data){
+			//alert('this ok');
+			//alert($(".qrcode-img .desc").html());
+			//$(".qrcode-body").html('<img id="qrcode-img" src="http://c3.yunpan.360.cn/share/getDLinkQRcode?fullurl=http%3A%2F%2Fajnlsff3wa.l3.yunpan.cn%2Flk%2FQXig3WVxUZjW9"><p>链接可复制，可Aria2</p><a id="aria2url1" href="'+data.data.downloadurl+'" target="_blank" title="可复制下载地址">直接下载</a> | <a id="aria2down1" onclick="aria2down1();">Aria2</a> | <a id="setting" onclick="settingshow();">设置</a>');
+			alert(data);
+		 },
+		error:function(){
+			  XF.widget.msgbox.show("获取普通下载链失败,请重试!",2,2000);
+			 }
+	}); 
         
         //$(".dl-qrcode").after('<div class="cmd dl-qrcode" data-cn="dl-aria2"><span>直链/Aria2下载</span></div>');
         $(".qrcode-img p").html('<div class="cmd dl-aria2" data-cn="dl-aria2"><span>直链/Aria2下载</span><div class="aria2-content" style="height: 270px; display: none;"><div class="caset"></div><div class="aria2-body"><p>仅支持多文件下载，暂不支持打包</p><a href="#" title="可复制下载地址" id="aria2-download" onclick="return false;">直接下载</a> | <a id="setting" onclick="settingshow();">设置</a></div><div class="caset-b"></div></div></div>');
