@@ -43,6 +43,8 @@ $("head").append('<style>'
     +'.aria2-content .caset {border-bottom:13px solid #ccc;border-right:13px dashed transparent;border-left:13px dashed transparent;height:0;margin-left:119px;overflow:hidden;width:0}'
     +'.aria2-content .caset-b {border-bottom:12px solid #fff;border-right:12px dashed transparent;border-left:12px dashed transparent;height:0;margin-left:120px;overflow:hidden;position:relative;top:-262px;width:0}'
     +'.aria2-body {background-color:#fff;border:1px solid #ccc;box-shadow:0 1px 4px rgba(0,0,0,.15);padding-bottom:13px;text-align:center;padding-top: 13px;}'
+    +'#aria2down1 {cursor: pointer;}'
+    +'#setting {cursor: pointer;}'
     +'</style>');
 
 $('.dl-aria2').live("click",function(){		    
